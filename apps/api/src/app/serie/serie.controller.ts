@@ -15,27 +15,27 @@ import { UpdateSerieDto } from './dto/update-serie.dto';
 export class SerieController {
   constructor(private readonly serieService: SerieService) {}
 
-  @Post()
+  @Post('create')
   create(@Body() createSerieDto: CreateSerieDto) {
     return this.serieService.create(createSerieDto);
   }
 
-  @Get()
+  @Get('all')
   findAll() {
     return this.serieService.findAll();
   }
 
-  @Get(':id')
+  @Get('one/:id')
   findOne(@Param('id') id: string) {
     return this.serieService.findOne(id);
   }
 
-  @Patch(':id')
+  @Patch('update/:id')
   update(@Param('id') id: string, @Body() updateSerieDto: UpdateSerieDto) {
     return this.serieService.update(id, updateSerieDto);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   remove(@Param('id') id: string) {
     return this.serieService.remove(id);
   }
