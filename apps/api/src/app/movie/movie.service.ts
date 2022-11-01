@@ -64,7 +64,7 @@ export class MovieService {
     }
   }
 
-  private handleExceptions(error: any) {
+  private handleExceptions(error: unknown) {
     console.log(error);
     throw new InternalServerErrorException(`Check server logs`);
   }
