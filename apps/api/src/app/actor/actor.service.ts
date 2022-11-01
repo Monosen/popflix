@@ -48,7 +48,7 @@ export class ActorService {
 
   async update(id: string, updateActorDto: UpdateActorDto) {
     const actor = await this.actorModel
-      .findByIdAndUpdate(id, updateActorDto)
+      .findByIdAndUpdate(id, updateActorDto, { new: true })
       .lean();
 
     if (!actor) {
