@@ -44,7 +44,7 @@ export class SerieService {
 
   async update(id: string, updateSerieDto: UpdateSerieDto) {
     const serie = await this.serieModel
-      .findByIdAndUpdate(id, updateSerieDto)
+      .findByIdAndUpdate(id, updateSerieDto, { new: true })
       .exec();
 
     if (!serie) {
