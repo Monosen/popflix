@@ -68,7 +68,7 @@ export class UserService {
 
   async update(id: string, { username, address, country }: UpdateUserDto) {
     const user = await this.userModel
-      .findByIdAndUpdate(id, { username, address, country })
+      .findByIdAndUpdate(id, { username, address, country }, { new: true })
       .select('-password')
       .lean();
 
