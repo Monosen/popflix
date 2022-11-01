@@ -43,7 +43,7 @@ export class UserService {
       throw new Error('Invalid password');
     }
 
-    return { ...user, password: undefined };
+    return { status: 'success', message: 'User logged in' };
   }
 
   async findAll() {
@@ -56,8 +56,8 @@ export class UserService {
     }
   }
 
-  async findOne(id: number) {
-    const user = await this.userModel.findById(id).lean();
+  async findOne(id: string) {
+    const user = await this.userModel.findById(id).select('-password').lean();
 
     if (!user) {
       throw new Error(`User not found`);
