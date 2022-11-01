@@ -1,26 +1,73 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateActorDto } from './dto/create-actor.dto';
 import { UpdateActorDto } from './dto/update-actor.dto';
+import { Actor } from './entities/actor.entity';
 
 @Injectable()
 export class ActorService {
-  create(createActorDto: CreateActorDto) {
-    return 'This action adds a new actor';
+  constructor(
+    @InjectModel(Actor.name)
+    private readonly actorModel: Model<Actor>
+  ) {}
+
+  async create(createActorDto: CreateActorDto) {
+    try {
+      const actor = await this.actorModel.create(createActorDto);
+
+      return actor;
+    } catch (error) {
+      this.handleExceptions(error);
+    }
   }
 
-  findAll() {
-    return `This action returns all actor`;
+  async findAll() {
+    try {
+      const actors = await this.actorModel.find().lean();
+
+      return actors;
+    } catch (error) {
+      this.handleExceptions(error);
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} actor`;
+  async findOne(id: number) {
+    const actor = await this.actorModel.findById(id).lean();
+
+    if (!actor) {
+      throw new BadRequestException(`Actor not found`);
+    }
+
+    return actor;
   }
 
-  update(id: number, updateActorDto: UpdateActorDto) {
-    return `This action updates a #${id} actor`;
+  async update(id: number, updateActorDto: UpdateActorDto) {
+    const actor = await this.actorModel
+      .findByIdAndUpdate(id, updateActorDto)
+      .lean();
+
+    if (!actor) {
+      throw new BadRequestException(`Actor not found`);
+    }
+
+    return actor;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} actor`;
+  async remove(id: number) {
+    const actor = await this.actorModel.findByIdAndDelete(id);
+
+    if (!actor) {
+      throw new BadRequestException(`Actor not found`);
+    }
+  }
+
+  private handleExceptions(error: any) {
+    console.log(error);
+    throw new InternalServerErrorException(`Check server logs`);
   }
 }
