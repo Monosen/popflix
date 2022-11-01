@@ -66,7 +66,7 @@ export class UserService {
     return user;
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto) {
+  async update(id: string, updateUserDto: UpdateUserDto) {
     const user = await this.userModel
       .findByIdAndUpdate(id, updateUserDto)
       .lean();
@@ -78,7 +78,7 @@ export class UserService {
     return user;
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const user = await this.userModel.findByIdAndDelete(id);
 
     if (!user) {
