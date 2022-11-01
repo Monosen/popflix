@@ -32,7 +32,7 @@ export class SerieService {
     }
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const serie = await this.serieModel.findById(id).exec();
 
     if (!serie) {
@@ -42,7 +42,7 @@ export class SerieService {
     return serie;
   }
 
-  async update(id: number, updateSerieDto: UpdateSerieDto) {
+  async update(id: string, updateSerieDto: UpdateSerieDto) {
     const serie = await this.serieModel
       .findByIdAndUpdate(id, updateSerieDto)
       .exec();
@@ -54,7 +54,7 @@ export class SerieService {
     return serie;
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const serie = await this.serieModel.findByIdAndDelete(id).exec();
 
     if (!serie) {
@@ -62,7 +62,7 @@ export class SerieService {
     }
   }
 
-  private handleExceptions(error: any) {
+  private handleExceptions(error: unknown) {
     console.log(error);
     throw new InternalServerErrorException(`Check server logs`);
   }

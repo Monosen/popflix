@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { SerieService } from './serie.service';
 import { CreateSerieDto } from './dto/create-serie.dto';
 import { UpdateSerieDto } from './dto/update-serie.dto';
@@ -19,16 +27,16 @@ export class SerieController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.serieService.findOne(+id);
+    return this.serieService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateSerieDto: UpdateSerieDto) {
-    return this.serieService.update(+id, updateSerieDto);
+    return this.serieService.update(id, updateSerieDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.serieService.remove(+id);
+    return this.serieService.remove(id);
   }
 }

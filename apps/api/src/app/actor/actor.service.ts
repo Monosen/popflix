@@ -36,7 +36,7 @@ export class ActorService {
     }
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const actor = await this.actorModel.findById(id).lean();
 
     if (!actor) {
@@ -46,7 +46,7 @@ export class ActorService {
     return actor;
   }
 
-  async update(id: number, updateActorDto: UpdateActorDto) {
+  async update(id: string, updateActorDto: UpdateActorDto) {
     const actor = await this.actorModel
       .findByIdAndUpdate(id, updateActorDto)
       .lean();
@@ -58,7 +58,7 @@ export class ActorService {
     return actor;
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const actor = await this.actorModel.findByIdAndDelete(id);
 
     if (!actor) {

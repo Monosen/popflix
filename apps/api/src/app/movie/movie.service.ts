@@ -36,7 +36,7 @@ export class MovieService {
     }
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const movie = await this.movieModel.findById(id).lean();
 
     if (!movie) {
@@ -46,7 +46,7 @@ export class MovieService {
     return movie;
   }
 
-  update(id: number, updateMovieDto: UpdateMovieDto) {
+  update(id: string, updateMovieDto: UpdateMovieDto) {
     const movie = this.movieModel.findByIdAndUpdate(id, updateMovieDto).lean();
 
     if (!movie) {
@@ -56,7 +56,7 @@ export class MovieService {
     return movie;
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     const movie = await this.movieModel.findByIdAndDelete(id);
 
     if (!movie) {
