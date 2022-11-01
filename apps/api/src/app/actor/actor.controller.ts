@@ -15,27 +15,27 @@ import { UpdateActorDto } from './dto/update-actor.dto';
 export class ActorController {
   constructor(private readonly actorService: ActorService) {}
 
-  @Post()
+  @Post('create')
   create(@Body() createActorDto: CreateActorDto) {
     return this.actorService.create(createActorDto);
   }
 
-  @Get()
+  @Get('all')
   findAll() {
     return this.actorService.findAll();
   }
 
-  @Get(':id')
+  @Get('one/:id')
   findOne(@Param('id') id: string) {
     return this.actorService.findOne(id);
   }
 
-  @Patch(':id')
+  @Patch('update/:id')
   update(@Param('id') id: string, @Body() updateActorDto: UpdateActorDto) {
     return this.actorService.update(id, updateActorDto);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   remove(@Param('id') id: string) {
     return this.actorService.remove(id);
   }
