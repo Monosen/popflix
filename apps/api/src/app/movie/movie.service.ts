@@ -47,7 +47,9 @@ export class MovieService {
   }
 
   update(id: string, updateMovieDto: UpdateMovieDto) {
-    const movie = this.movieModel.findByIdAndUpdate(id, updateMovieDto).lean();
+    const movie = this.movieModel
+      .findByIdAndUpdate(id, updateMovieDto, { new: true })
+      .lean();
 
     if (!movie) {
       throw new BadRequestException(`Movie not found`);
