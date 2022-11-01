@@ -48,7 +48,7 @@ export class UserService {
 
   async findAll() {
     try {
-      const users = await this.userModel.find().lean();
+      const users = await this.userModel.find().select('-password').lean();
 
       return users;
     } catch (error) {
