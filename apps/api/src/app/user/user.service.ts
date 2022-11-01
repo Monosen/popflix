@@ -14,11 +14,15 @@ export class UserService {
   ) {}
 
   async signUp(createUserDto: CreateUserDto) {
-    createUserDto.password = await argon.hash(createUserDto.password);
+    createUserDto.password = await argon.hash(createUserDto.password, {});
 
     const user = await this.userModel.create(createUserDto);
 
-    return { ...user, password: undefined };
+    if (!user) {
+      throw new InternalServerErrorException('User not created');
+    }
+
+    return { ...createUserDto, password: undefined };
   }
 
   async signIn(updateUserDto: UpdateUserDto) {
@@ -82,7 +86,7 @@ export class UserService {
     }
   }
 
-  private handleExceptions(error: any) {
+  private handleExceptions(error: unknown) {
     console.log(error);
     throw new InternalServerErrorException(`Check server logs`);
   }
