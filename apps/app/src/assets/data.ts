@@ -178,7 +178,7 @@ export const movies = [
   },
 ];
 
-const series = [
+export const series = [
   {
     img: 'rutaEddie',
     name: 'Corpse-Party',

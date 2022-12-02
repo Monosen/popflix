@@ -14,10 +14,10 @@ export const Card: FC<Props> = ({ img, title, description }) => {
         <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{title}</h2>
+        <h2 className="card-title">{title.replaceAll('-', ' ')}</h2>
         <p>{description}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="btn btn-primary">Ver Ahora</button>
         </div>
       </div>
     </div>
