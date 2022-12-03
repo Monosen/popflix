@@ -10,7 +10,7 @@ interface Props {
 
 export const Card: FC<Props> = ({ img, title, author = '' }) => {
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-200 shadow-xl">
       <figure className="px-10 pt-10">
         <img
           src={
@@ -24,7 +24,7 @@ export const Card: FC<Props> = ({ img, title, author = '' }) => {
         <h2 className="card-title text-white">{title.replaceAll('-', ' ')}</h2>
         <p>{author}</p>
         <div className="card-actions">
-          <Link to="/book-details" className="btn btn-primary">
+          <Link to={`/serie/${title}`} className="btn btn-primary">
             Ver Ahora
           </Link>
         </div>

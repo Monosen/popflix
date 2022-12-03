@@ -1,6 +1,5 @@
 import { FC, PropsWithChildren } from 'react';
-import { Footer } from '../components/custom/Footer';
-import { Navbar } from '../components/custom/Navbar';
+import { Footer, Navbar } from '../components/custom';
 
 const Main: FC<PropsWithChildren> = ({ children }) => {
   return (
