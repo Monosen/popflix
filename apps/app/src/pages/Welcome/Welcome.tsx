@@ -21,8 +21,8 @@ const Welcome = () => {
         <nav>
           <ul>
             <li className="myList">
-              <Link to="/Profiles">
-                Login<span></span>
+              <Link to="/signup">
+                Iniciar Sesion<span></span>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -31,7 +31,7 @@ const Welcome = () => {
 
             <li className="myList">
               <Link to="/signin">
-                Create Account<span></span>
+                Crear Cuenta<span></span>
                 <span></span>
                 <span></span>
                 <span></span>

@@ -19,10 +19,10 @@ const SignUp = () => {
       {/*CREATE ACCOUNT*/}
       <section className="form-account">
         <br></br>
-        <h5>Crear una Cuenta</h5>
+        <h5>Iniciar Sesion</h5>
         <img className="avatar" src={avatar} alt="avatar-usr" />
         <input
-          className="control"
+          className="control p-2 rounded"
           type="text"
           name="user"
           defaultValue=""
@@ -35,15 +35,7 @@ const SignUp = () => {
           defaultValue=""
           placeholder="Password"
         />
-        <a href="./home.html">
-          <input
-            className="buttons"
-            type="submit"
-            name=""
-            defaultValue="Create Account"
-            placeholder="User"
-          />
-        </a>
+        <button className="btn btn-primary">Iniciar Sesion</button>
         <p>
           <a href="#">¿Forgot your password?</a>
         </p>
