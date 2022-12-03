@@ -6,7 +6,7 @@ const Main: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto mt-5">{children}</div>
+      <main className="container mx-auto mt-5">{children}</main>
       <Footer />
     </>
   );

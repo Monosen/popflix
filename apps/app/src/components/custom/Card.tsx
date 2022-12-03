@@ -1,23 +1,32 @@
 import { title } from 'process';
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 interface Props {
   title: string;
-  description?: string;
   img: string;
+  author?: string;
 }
 
-export const Card: FC<Props> = ({ img, title, description }) => {
+export const Card: FC<Props> = ({ img, title, author = '' }) => {
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
-      <figure>
-        <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
+    <div className="card bg-base-100 shadow-xl">
+      <figure className="px-10 pt-10">
+        <img
+          src={
+            img.startsWith('www') ? img : 'https://placeimg.com/250/300/arch'
+          }
+          alt={title}
+          className="rounded-xl"
+        />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">{title.replaceAll('-', ' ')}</h2>
-        <p>{description}</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Ver Ahora</button>
+      <div className=" card-body items-center text-center">
+        <h2 className="card-title text-white">{title.replaceAll('-', ' ')}</h2>
+        <p>{author}</p>
+        <div className="card-actions">
+          <Link to="/book-details" className="btn btn-primary">
+            Ver Ahora
+          </Link>
         </div>
       </div>
     </div>
