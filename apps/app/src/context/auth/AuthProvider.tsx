@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
+import Cookie from 'js-cookie';
 import { FC, PropsWithChildren, useReducer } from 'react';
 
 import { popflixApi } from '../../api';
@@ -30,7 +30,9 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         address,
         country,
       });
-      console.log(data);
+
+      Cookie.set('token', data.token);
+
       return { hasError: false };
     } catch (error) {
       return { hasError: true, message: (error as any).message };

@@ -1,10 +1,14 @@
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
+import { AuthContext } from '../../context/auth/AuthContext';
 
 import LogoCreate from '../../assets/img/General/Palomitas_de_Maiz.png';
 import Background from '../../assets/img/General/Background.jpg';
 import avatar from '../../assets/img/General/Avatar.jpg';
+
 import './SignIn.styles.css';
-import { useState } from 'react';
 
 type Inputs = {
   username: string;
@@ -14,10 +18,11 @@ type Inputs = {
 };
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const { registerUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
 
@@ -32,25 +37,21 @@ const SignIn = () => {
     country,
   }: Inputs) => {
     setShowError(false);
-    console.log(username, password, address, country);
 
-    // const { hasError, message } = await registerUser(
-    //   username,
-    //   password,
-    //   address,
-    //   country
-    // );
+    const { hasError, message } = await registerUser(
+      username,
+      password,
+      address,
+      country
+    );
 
-    // if (hasError) {
-    //   setShowError(true);
-    //   setErrorMessage(message!);
-    //   setTimeout(() => setShowError(false), 3000);
-    // }
-    // // const destination = router.query.p?.toString() || '/'
+    if (hasError) {
+      setShowError(true);
+      setErrorMessage(message!);
+      setTimeout(() => setShowError(false), 3000);
+    }
 
-    // // router.replace(destination)
-
-    // await signIn('credentials', { email, password });
+    navigate('/');
   };
 
   return (

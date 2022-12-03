@@ -1,4 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+  Navigate,
+} from 'react-router-dom';
+import Cookie from 'js-cookie';
+
 import './App.css';
 
 import Home from './pages/Home/Home';
@@ -10,16 +18,37 @@ import SignIn from './pages/Auth/SignUp';
 import SignUp from './pages/Auth/SignIn';
 
 function App() {
+  const pageValidation = (page: JSX.Element): JSX.Element => {
+    if (Cookie.get('token')) {
+      return page;
+    } else {
+      return <Navigate to="/welcome" />;
+    }
+  };
+  const pageValidationWithoutToken = (page: JSX.Element): JSX.Element => {
+    if (!Cookie.get('token')) {
+      return page;
+    } else {
+      return <Navigate to="/" />;
+    }
+  };
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={pageValidation(<Home />)} />
         <Route path="/welcome" element={<Welcome />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/series" element={<Series />} />
-        <Route path="/serie/:code" element={<Serie />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/movies" element={pageValidation(<Movies />)} />
+        <Route path="/series" element={pageValidation(<Series />)} />
+        <Route path="/serie/:code" element={pageValidation(<Serie />)} />
+        <Route
+          path="/signin"
+          element={pageValidationWithoutToken(<SignIn />)}
+        />
+        <Route
+          path="/signup"
+          element={pageValidationWithoutToken(<SignUp />)}
+        />
       </Routes>
     </Router>
   );
