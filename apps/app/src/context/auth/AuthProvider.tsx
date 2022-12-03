@@ -1,4 +1,3 @@
-import axios from 'axios';
 import Cookie from 'js-cookie';
 import { FC, PropsWithChildren, useReducer } from 'react';
 
@@ -16,6 +15,27 @@ const AUTH_INITIAL_STATE: AuthState = {
 
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, AUTH_INITIAL_STATE);
+
+  const loginUser = async (
+    username: string,
+    password: string
+  ): Promise<boolean> => {
+    try {
+      const { data } = await popflixApi.post('/user/signIn', {
+        username,
+        password,
+      });
+      const { token, user } = data;
+
+      Cookie.set('token', token);
+
+      dispatch({ type: '[Auth] - Login', payload: user });
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
 
   const registerUser = async (
     username: string,
@@ -39,8 +59,15 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
+  const logoutUser = () => {
+    Cookie.remove('token');
+    dispatch({ type: '[Auth] - Logout' });
+  };
+
   return (
-    <AuthContext.Provider value={{ ...state, registerUser }}>
+    <AuthContext.Provider
+      value={{ ...state, registerUser, loginUser, logoutUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

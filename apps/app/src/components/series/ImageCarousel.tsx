@@ -7,13 +7,9 @@ interface Props {
 export const ImageCarousel: FC<Props> = ({ img }) => {
   return (
     <div>
-      <div className="carousel max-w-[400px] rounded-box ml-[118px]">
+      <div className="carousel max-w-[400px] rounded-box ml-[60px]">
         <div id="slide1" className="carousel-item relative">
-          <img
-            src={'https://placeimg.com/400/225/arch'}
-            className="w-[400px] h-[500px] object-cover"
-            alt=""
-          />
+          <img src={img} className="w-[400px] h-[500px] object-cover" alt="" />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide2" className="btn btn-circle">
               ❮

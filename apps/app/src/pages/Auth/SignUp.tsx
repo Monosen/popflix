@@ -51,7 +51,7 @@ const SignIn = () => {
       setTimeout(() => setShowError(false), 3000);
     }
 
-    navigate('/');
+    setTimeout(() => navigate('/'), 3000);
   };
 
   return (

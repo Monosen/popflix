@@ -1,6 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context';
 
 export const Navbar = () => {
+  const { logoutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const logout = () => {
+    logoutUser();
+    setTimeout(() => {
+      navigate('/welcome');
+    }, 5000);
+  };
+
   return (
     <div className="bg-base-200 py-2">
       <div className="max-w-7xl mx-auto navbar">
@@ -34,28 +46,6 @@ export const Navbar = () => {
               </li>
               <li>
                 <Link to="/series">Series</Link>
-              </li>
-              <li tabIndex={0}>
-                <span className="justify-between cursor-pointer">
-                  Books
-                  <svg
-                    className="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                  </svg>
-                </span>
-                <ul className="p-2 bg-gray-100">
-                  <li>
-                    <Link to="/">Submenu 1</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Submenu 2</Link>
-                  </li>
-                </ul>
               </li>
               <li>
                 <div className="form-control mt-3">
@@ -107,28 +97,7 @@ export const Navbar = () => {
             <li>
               <Link to="/series">Series</Link>
             </li>
-            <li tabIndex={0}>
-              <span>
-                Books
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                </svg>
-              </span>
-              <ul className="p-2 bg-gray-100">
-                <li>
-                  <Link to="/">Submenu 1</Link>
-                </li>
-                <li>
-                  <Link to="/">Submenu 2</Link>
-                </li>
-              </ul>
-            </li>
+
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
@@ -148,7 +117,7 @@ export const Navbar = () => {
                 <li>
                   <a>Settings</a>
                 </li>
-                <li>
+                <li onClick={logout}>
                   <a>Logout</a>
                 </li>
               </ul>
