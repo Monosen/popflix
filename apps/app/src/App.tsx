@@ -6,8 +6,8 @@ import Movies from './pages/Movies/Movies';
 import Series from './pages/Series/Series';
 import Serie from './pages/Series/Serie';
 import Welcome from './pages/Welcome/Welcome';
-import SignIn from './pages/Auth/SignIn';
-import SignUp from './pages/Auth/SignUp';
+import SignIn from './pages/Auth/SignUp';
+import SignUp from './pages/Auth/SignIn';
 
 function App() {
   return (
