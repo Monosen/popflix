@@ -23,5 +23,5 @@ export class CreateMovieDto {
 
   @IsString()
   @IsNotEmpty()
-  image: string;
+  video: string;
 }

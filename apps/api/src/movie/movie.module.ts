@@ -3,6 +3,7 @@ import { MovieService } from './movie.service';
 import { MovieController } from './movie.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Movie, MovieSchema } from './entities/movie.entity';
+import { FileModule } from '../file/file.module';
 
 @Module({
   controllers: [MovieController],
@@ -14,6 +15,7 @@ import { Movie, MovieSchema } from './entities/movie.entity';
         schema: MovieSchema,
       },
     ]),
+    FileModule,
   ],
 })
 export class MovieModule {}

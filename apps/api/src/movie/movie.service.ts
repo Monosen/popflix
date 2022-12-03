@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { FileService } from '../file/file.service';
 import { movies } from './assets/movies';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
@@ -15,11 +16,18 @@ export class MovieService {
   constructor(
     @InjectModel(Movie.name)
     private readonly movieModel: Model<Movie>,
+
+    private readonly fileService: FileService,
   ) {}
 
-  async create(createMovieDto: CreateMovieDto) {
+  async create(createMovieDto: CreateMovieDto, file: Express.Multer.File) {
     try {
-      const movie = await this.movieModel.create(createMovieDto);
+      const { url } = await this.fileService.uploadFile(file);
+
+      const movie = await this.movieModel.create({
+        ...createMovieDto,
+        image: url,
+      });
 
       return movie;
     } catch (error) {

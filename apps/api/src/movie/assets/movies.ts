@@ -1,7 +1,7 @@
 export const movies = [
   {
     image: '13-Horas.jpg',
-    video: '',
+    video: 'no',
     name: '13-Horas',
     categories: ['accion'],
     description:
@@ -9,7 +9,7 @@ export const movies = [
   },
   {
     image: 'BadBoys-Forever.jpg',
-    video: '',
+    video: 'no',
     name: 'BadBoys-Forever',
     categories: ['accion'],
     description:
@@ -17,7 +17,7 @@ export const movies = [
   },
   {
     image: 'Bloodshot.jpg',
-    video: '',
+    video: 'no',
     name: 'Bloodshot',
     categories: ['accion'],
     description:
@@ -25,7 +25,7 @@ export const movies = [
   },
   {
     image: 'El-Implacable.jpg',
-    video: '',
+    video: 'no',
     name: 'El-Implacable',
     categories: ['accion'],
     description:
@@ -33,7 +33,7 @@ export const movies = [
   },
   {
     image: 'El-Origen.jpg',
-    video: '',
+    video: 'no',
     name: 'El-Origen',
     categories: ['accion'],
     description:
@@ -41,7 +41,7 @@ export const movies = [
   },
   {
     image: 'Mulan.jpg',
-    video: '',
+    video: 'no',
     name: 'Mulan',
     categories: ['animada'],
     description:
@@ -49,7 +49,7 @@ export const movies = [
   },
   {
     image: 'Buscando-A-Nemo.jpg',
-    video: '',
+    video: 'no',
     name: 'Buscando-A-Nemo',
     categories: ['animada'],
     description:
@@ -57,7 +57,7 @@ export const movies = [
   },
   {
     image: 'La-Era-De-Hielo.jpg',
-    video: '',
+    video: 'no',
     name: 'La-Era-De-Hielo',
     categories: ['animada'],
     description:
@@ -65,7 +65,7 @@ export const movies = [
   },
   {
     image: 'Bichos.jpg',
-    video: '',
+    video: 'no',
     name: 'Bichos',
     categories: ['animada'],
     description:
@@ -73,7 +73,7 @@ export const movies = [
   },
   {
     image: 'El-Rey-Leon.jpg',
-    video: '',
+    video: 'no',
     name: 'El-Rey-Leon',
     categories: ['animada'],
     description:
@@ -81,7 +81,7 @@ export const movies = [
   },
   {
     image: 'American-Pie.jpg',
-    video: '',
+    video: 'no',
     name: 'American-Pie',
     categories: ['comedia'],
     description:
@@ -89,7 +89,7 @@ export const movies = [
   },
   {
     image: 'Bajo-El-Mismo-Techo.jpg',
-    video: '',
+    video: 'no',
     name: 'Bajo-El-Mismo-Techo',
     categories: ['comedia'],
     description:
@@ -97,7 +97,7 @@ export const movies = [
   },
   {
     image: 'Grandes-Espias.jpg',
-    video: '',
+    video: 'no',
     name: 'Grandes-Espias',
     categories: ['comedia'],
     description:
@@ -105,7 +105,7 @@ export const movies = [
   },
   {
     image: 'La-Ciudad-Perdida.jpg',
-    video: '',
+    video: 'no',
     name: 'La-Ciudad-Perdida',
     categories: ['comedia'],
     description:
@@ -113,7 +113,7 @@ export const movies = [
   },
   {
     image: 'Scary-Movie.jpg',
-    video: '',
+    video: 'no',
     name: 'Scary-Movie',
     categories: ['comedia'],
     description:
@@ -121,7 +121,7 @@ export const movies = [
   },
   {
     image: 'Hocus-Pocus.jpg',
-    video: '',
+    video: 'no',
     name: 'Hocus-Pocus',
     categories: ['fantasia'],
     description:
@@ -129,7 +129,7 @@ export const movies = [
   },
   {
     image: 'Spider-Man-No-Way-Home.jpg',
-    video: '',
+    video: 'no',
     name: 'Spider-Man-No-Way-Home',
     categories: ['fantasia'],
     description:
@@ -137,7 +137,7 @@ export const movies = [
   },
   {
     image: 'Back-To-The-Future.jpg',
-    video: '',
+    video: 'no',
     name: 'Back-To-The-Future',
     categories: ['fantasia'],
     description:
@@ -145,7 +145,7 @@ export const movies = [
   },
   {
     image: 'Free-Guy.jpg',
-    video: '',
+    video: 'no',
     name: 'Free-Guy',
     categories: ['fantasia'],
     description:
@@ -153,7 +153,7 @@ export const movies = [
   },
   {
     image: 'Goosebumps.jpg',
-    video: '',
+    video: 'no',
     name: 'Goosebumps',
     categories: ['fantasia'],
     description:
@@ -161,7 +161,7 @@ export const movies = [
   },
   {
     image: 'La-Noche-Del-Demonio.jpg',
-    video: '',
+    video: 'no',
     name: 'La-Noche-Del-Demonio',
     categories: ['terror'],
     description:
@@ -169,7 +169,7 @@ export const movies = [
   },
   {
     image: 'La-Monja.jpg',
-    video: '',
+    video: 'no',
     name: 'La-Monja',
     categories: ['terror'],
     description:
@@ -177,7 +177,7 @@ export const movies = [
   },
   {
     image: 'El-Conjuro.jpg',
-    video: '',
+    video: 'no',
     name: 'El-Conjuro',
     categories: ['terror'],
     description:
@@ -185,7 +185,7 @@ export const movies = [
   },
   {
     image: 'Scream.jpg',
-    video: '',
+    video: 'no',
     name: 'Scream',
     categories: ['terror'],
     description:
@@ -193,7 +193,7 @@ export const movies = [
   },
   {
     image: 'La-Ouija.jpg',
-    video: '',
+    video: 'no',
     name: 'La-Ouija',
     categories: ['terror'],
     description:

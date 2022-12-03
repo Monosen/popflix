@@ -6,18 +6,30 @@ import {
   Patch,
   Param,
   Delete,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { MovieService } from './movie.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { fileFilter } from '../file/helpers/fileFilter.helper';
+import { diskStorage } from 'multer';
+import { fileName } from '../file/helpers/fileName.helper';
 
 @Controller('movie')
 export class MovieController {
   constructor(private readonly movieService: MovieService) {}
 
   @Post('create')
-  create(@Body() createMovieDto: CreateMovieDto) {
-    return this.movieService.create(createMovieDto);
+  @UseInterceptors(
+    FileInterceptor('file', {
+      fileFilter,
+      storage: diskStorage({ filename: fileName }),
+    }),
+  )
+  create(@Body() createMovieDto: CreateMovieDto, @UploadedFile() file) {
+    return this.movieService.create(createMovieDto, file);
   }
 
   @Get('all')
