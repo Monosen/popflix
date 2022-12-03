@@ -68,15 +68,21 @@ export const Navbar = () => {
                 >
                   <li>
                     <a className="justify-between">
-                      Profile
-                      <span className="badge">New</span>
+                      Perfil
+                      <span className="badge">Nuevo</span>
                     </a>
                   </li>
                   <li>
-                    <a>Settings</a>
+                    <a>Configuracion</a>
+                  </li>
+                  <li onClick={logout}>
+                    <a>Cerrar Sesion</a>
                   </li>
                   <li>
-                    <a>Logout</a>
+                    <Link to={'/movie/new'}>Añadir Peliculas</Link>
+                  </li>
+                  <li>
+                    <Link to={'/serie/new'}>Añadir Series</Link>
                   </li>
                 </ul>
               </div>
@@ -110,15 +116,21 @@ export const Navbar = () => {
               >
                 <li>
                   <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
+                    Perfil
+                    <span className="badge">Nuevo</span>
                   </a>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <a>Configuracion</a>
                 </li>
                 <li onClick={logout}>
-                  <a>Logout</a>
+                  <a>Cerrar Sesion</a>
+                </li>
+                <li>
+                  <Link to={'/movie/new'}>Añadir Peliculas</Link>
+                </li>
+                <li>
+                  <Link to={'/serie/new'}>Añadir Series</Link>
                 </li>
               </ul>
             </div>
