@@ -1,11 +1,14 @@
+import { ChangeEvent } from 'react';
 import { useForm } from 'react-hook-form';
+import { popflixApi } from '../../api';
 import Layout from '../../layouts/Layout';
 
 interface FormData {
   name: string;
-  categories: string[];
+  categories: string;
   video: string;
   description: string;
+  file: any;
 }
 
 const NewMovie = () => {
@@ -19,24 +22,22 @@ const NewMovie = () => {
   } = useForm<FormData>({});
 
   const onSubmit = async (formData: FormData) => {
-    console.log(formData);
-  };
-
-  const onFilesSelected = async ({ target }: ChangeEvent<HTMLInputElement>) => {
-    if (!target.files || target.files.length === 0) return;
+    if (!formData.file || formData.file.length === 0) return;
 
     try {
-      for (const file of target.files) {
+      for (const file of formData.file) {
         const formData = new FormData();
-        formData.append('file', file);
-        const { data } = await tesloApi.post<{ message: string }>(
-          '/admin/upload',
-          formData
-        );
 
-        console.log(
-          '🚀 ~ file: NewMovie.tsx:33 ~ onFilesSelected ~ data',
-          data
+        formData.append('name', getValues('name'));
+        formData.append('video', getValues('video'));
+        formData.append('description', getValues('description'));
+        formData.append('categories', getValues('categories'));
+        formData.append('categories', '');
+        formData.append('file', file);
+
+        const { data } = await popflixApi.post<{ message: string }>(
+          '/movie/create',
+          formData
         );
       }
     } catch (error) {
@@ -96,10 +97,12 @@ const NewMovie = () => {
             Imagen
           </label>
           <input
+            {...register('file', {
+              required: 'Este campo es requerido',
+            })}
             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
             type="file"
             accept="image/png, image/git, image/jpeg, image/jpg"
-            onChange={onFilesSelected}
           />
         </div>
         <div className="mb-6">

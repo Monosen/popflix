@@ -13,7 +13,11 @@ const Movies = () => {
         {movies?.map((movie) => (
           <Card
             url={`/movie/${movie._id}`}
-            img={`../../../public/img/movies/${movie.image}`}
+            img={
+              movie.image.startsWith('http')
+                ? movie.image
+                : `../../../public/img/movies/${movie.image}`
+            }
             title={movie.name}
             key={movie.name}
           />
