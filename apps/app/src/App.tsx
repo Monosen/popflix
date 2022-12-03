@@ -17,6 +17,8 @@ import Welcome from './pages/Welcome/Welcome';
 import SignIn from './pages/Auth/SignUp';
 import SignUp from './pages/Auth/SignIn';
 import Movie from './pages/Movies/Movie';
+import NewSerie from './pages/Series/NewSerie';
+import NewMovie from './pages/Movies/NewMovie';
 
 function App() {
   const pageValidation = (page: JSX.Element): JSX.Element => {
@@ -46,6 +48,8 @@ function App() {
         <Route path="/series" element={pageValidation(<Series />)} />
         <Route path="/serie/:code" element={pageValidation(<Serie />)} />
         <Route path="/movie/:code" element={pageValidation(<Movie />)} />
+        <Route path="/serie/new" element={pageValidation(<NewSerie />)} />
+        <Route path="/movie/new" element={pageValidation(<NewMovie />)} />
         <Route
           path="/signin"
           element={pageValidationWithoutToken(<SignIn />)}
