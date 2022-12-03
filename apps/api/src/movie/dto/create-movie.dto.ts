@@ -1,11 +1,4 @@
-import {
-  IsArray,
-  IsNotEmpty,
-  IsNumber,
-  IsPositive,
-  IsString,
-  MinLength,
-} from 'class-validator';
+import { IsArray, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class CreateMovieDto {
   // isString, Minlenth 1

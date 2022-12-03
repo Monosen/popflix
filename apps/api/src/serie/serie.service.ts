@@ -1,6 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { FileService } from '../file/file.service';
 import { series } from './assets/series';
 import { CreateSerieDto } from './dto/create-serie.dto';
 import { UpdateSerieDto } from './dto/update-serie.dto';
@@ -11,11 +12,17 @@ export class SerieService {
   constructor(
     @InjectModel(Serie.name)
     private readonly serieModel: Model<Serie>,
+    private readonly fileService: FileService,
   ) {}
 
-  async create(createSerieDto: CreateSerieDto) {
+  async create(createSerieDto: CreateSerieDto, file: Express.Multer.File) {
     try {
-      const serie = await this.serieModel.create(createSerieDto);
+      const { url } = await this.fileService.uploadFile(file);
+
+      const serie = await this.serieModel.create({
+        ...createSerieDto,
+        image: url,
+      });
 
       return serie;
     } catch (error) {

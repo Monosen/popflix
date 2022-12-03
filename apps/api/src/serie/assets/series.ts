@@ -1,7 +1,7 @@
 export const series = [
   {
     image: 'Corpse-Party.webp',
-    video: '',
+    video: 'no',
     name: 'Corpse-Party',
     categories: ['Anime'],
     description:
@@ -9,7 +9,7 @@ export const series = [
   },
   {
     image: 'Sakura-Card-Captor.webp',
-    video: '',
+    video: 'no',
     name: 'Sakura-Card-Captor',
     categories: ['Anime'],
     description:
@@ -17,7 +17,7 @@ export const series = [
   },
   {
     image: 'Sakura-Tsubasa-Chronicle.jpg',
-    video: '',
+    video: 'no',
     name: 'Sakura-Tsubasa-Chronicle',
     categories: ['Anime'],
     description:
@@ -25,7 +25,7 @@ export const series = [
   },
   {
     image: 'The-Haunting-Of-Hill-House.jpg',
-    video: '',
+    video: 'no',
     name: 'The-Haunting-Of-Hill-House',
     categories: ['Anime'],
     description:
@@ -33,14 +33,14 @@ export const series = [
   },
   {
     image: 'El-Jardin-De-Las-Palabras.jpg',
-    video: '',
+    video: 'no',
     name: 'El-Jardin-De-Las-Palabras',
     categories: ['Anime'],
     description: 'x',
   },
   {
     image: 'Your-Name.jpg',
-    video: '',
+    video: 'no',
     name: 'Your-Name',
     categories: ['Anime'],
     description:
@@ -48,7 +48,7 @@ export const series = [
   },
   {
     image: 'El-Tiempo-Contigo.jpg',
-    video: '',
+    video: 'no',
     name: 'El-Tiempo-Contigo',
     categories: ['Anime'],
     description:
@@ -56,7 +56,7 @@ export const series = [
   },
   {
     image: 'Dragon-Ball-Z.jpg',
-    video: '',
+    video: 'no',
     name: 'Dragon-Ball-Z',
     categories: ['Anime'],
     description:
@@ -64,7 +64,7 @@ export const series = [
   },
   {
     image: 'Sabrina.jpg',
-    video: '',
+    video: 'no',
     name: 'Sabrina',
     categories: ['Terror'],
     description:
@@ -72,7 +72,7 @@ export const series = [
   },
   {
     image: 'Goosebumps.jpg',
-    video: '',
+    video: 'no',
     name: 'Goosebumps',
     categories: ['Terror'],
     description:
@@ -80,7 +80,7 @@ export const series = [
   },
   {
     image: 'Game-Of-Thrones.jpg',
-    video: '',
+    video: 'no',
     name: 'Game-Of-Thrones',
     categories: ['Terror'],
     description:
@@ -88,7 +88,7 @@ export const series = [
   },
   {
     image: 'CSI.jpg',
-    video: '',
+    video: 'no',
     name: 'CSI',
     categories: ['Policial'],
     description:
@@ -96,7 +96,7 @@ export const series = [
   },
   {
     image: 'CSI-Miami.jpg',
-    video: '',
+    video: 'no',
     name: 'CSI-Miami',
     categories: ['Policial'],
     description:
@@ -104,7 +104,7 @@ export const series = [
   },
   {
     image: 'Scorpion.jpg',
-    video: '',
+    video: 'no',
     name: 'Scorpion',
     categories: ['Policial'],
     description:
@@ -112,7 +112,7 @@ export const series = [
   },
   {
     image: 'Flash.jpg',
-    video: '',
+    video: 'no',
     name: 'Flash',
     categories: ['Policial'],
     description:
@@ -120,7 +120,7 @@ export const series = [
   },
   {
     image: 'Fear-Street.jpg',
-    video: '',
+    video: 'no',
     name: 'Fear-Street',
     categories: ['Policial'],
     description:
@@ -128,7 +128,7 @@ export const series = [
   },
   {
     image: 'Coraje-El-Perro-Cobarde.jpg',
-    video: '',
+    video: 'no',
     name: 'Coraje-El-Perro-Cobarde',
     categories: ['Cartoons'],
     description:
@@ -136,7 +136,7 @@ export const series = [
   },
   {
     image: 'La-Vaca-Y-El-Pollito.jpg',
-    video: '',
+    video: 'no',
     name: 'La-Vaca-Y-El-Pollito',
     categories: ['Cartoons'],
     description:
@@ -144,7 +144,7 @@ export const series = [
   },
   {
     image: 'Laboratorio-De-Dexter.jpg',
-    video: '',
+    video: 'no',
     name: 'Laboratorio-De-Dexter',
     categories: ['Cartoons'],
     description:
@@ -152,7 +152,7 @@ export const series = [
   },
   {
     image: 'Las-Aventuras-De-Jackie-Chan.jpg',
-    video: '',
+    video: 'no',
     name: 'Las-Aventuras-De-Jackie-Chan',
     categories: ['Cartoons'],
     description:
@@ -160,7 +160,7 @@ export const series = [
   },
   {
     image: 'Pokemon.jpg',
-    video: '',
+    video: 'no',
     name: 'Pokemon',
     categories: ['Cartoons'],
     description:
@@ -168,7 +168,7 @@ export const series = [
   },
   {
     image: 'Ciencia-Traviesa.jpg',
-    video: '',
+    video: 'no',
     name: 'Ciencia-Traviesa',
     categories: ['los-90'],
     description:
@@ -176,7 +176,7 @@ export const series = [
   },
   {
     image: 'Los-Hechiceros-De-Waverly-Place.jpg',
-    video: '',
+    video: 'no',
     name: 'Colegio-Del-Agujero-Negro',
     categories: ['los-90'],
     description:
@@ -184,7 +184,7 @@ export const series = [
   },
   {
     image: 'El-Chapulin-Colorado.jpg',
-    video: '',
+    video: 'no',
     name: 'El-Chapulin-Colorado',
     categories: ['los-90'],
     description:
@@ -192,7 +192,7 @@ export const series = [
   },
   {
     image: 'El-Chavo-Del-8.jpg',
-    video: '',
+    video: 'no',
     name: 'El-Chavo-Del-8',
     categories: ['los-90'],
     description:

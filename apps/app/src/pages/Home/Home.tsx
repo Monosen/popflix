@@ -35,7 +35,11 @@ const Home = () => {
             ind <= 5 && (
               <Card
                 url={`/serie/${serie._id}`}
-                img={`../../../public/img/series/${serie.image}`}
+                img={
+                  serie.image.startsWith('http')
+                    ? serie.image
+                    : `../../../public/img/series/${serie.image}`
+                }
                 title={serie.name}
                 key={serie.name}
               />

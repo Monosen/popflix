@@ -6,18 +6,30 @@ import {
   Patch,
   Param,
   Delete,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
 import { SerieService } from './serie.service';
 import { CreateSerieDto } from './dto/create-serie.dto';
 import { UpdateSerieDto } from './dto/update-serie.dto';
+import { diskStorage } from 'multer';
+import { fileName } from '../file/helpers/fileName.helper';
+import { fileFilter } from '../file/helpers/fileFilter.helper';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('serie')
 export class SerieController {
   constructor(private readonly serieService: SerieService) {}
 
   @Post('create')
-  create(@Body() createSerieDto: CreateSerieDto) {
-    return this.serieService.create(createSerieDto);
+  @UseInterceptors(
+    FileInterceptor('file', {
+      fileFilter,
+      storage: diskStorage({ filename: fileName }),
+    }),
+  )
+  create(@Body() createSerieDto: CreateSerieDto, @UploadedFile() file) {
+    return this.serieService.create(createSerieDto, file);
   }
 
   @Get('all')

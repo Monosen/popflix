@@ -1,11 +1,4 @@
-import {
-  IsArray,
-  IsNotEmpty,
-  IsNumber,
-  IsPositive,
-  IsString,
-  MinLength,
-} from 'class-validator';
+import { IsArray, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class CreateSerieDto {
   @IsString()
@@ -26,5 +19,5 @@ export class CreateSerieDto {
 
   @IsString()
   @IsNotEmpty()
-  image: string;
+  video: string;
 }
