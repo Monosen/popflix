@@ -53,6 +53,8 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
       Cookie.set('token', data.token);
 
+      dispatch({ type: '[Auth] - Register', payload: data });
+
       return { hasError: false };
     } catch (error) {
       return { hasError: true, message: (error as any).message };

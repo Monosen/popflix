@@ -2,7 +2,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useNavigate,
   Navigate,
 } from 'react-router-dom';
 import Cookie from 'js-cookie';
@@ -19,6 +18,8 @@ import SignUp from './pages/Auth/SignIn';
 import Movie from './pages/Movies/Movie';
 import NewSerie from './pages/Series/NewSerie';
 import NewMovie from './pages/Movies/NewMovie';
+import Profile from './pages/User/Profile';
+import Setting from './pages/User/Setting';
 
 function App() {
   const pageValidation = (page: JSX.Element): JSX.Element => {
@@ -28,6 +29,7 @@ function App() {
       return <Navigate to="/welcome" />;
     }
   };
+
   const pageValidationWithoutToken = (page: JSX.Element): JSX.Element => {
     if (!Cookie.get('token')) {
       return page;
@@ -50,6 +52,8 @@ function App() {
         <Route path="/movie/:code" element={pageValidation(<Movie />)} />
         <Route path="/serie/new" element={pageValidation(<NewSerie />)} />
         <Route path="/movie/new" element={pageValidation(<NewMovie />)} />
+        <Route path="/user/profile" element={pageValidation(<Profile />)} />
+        <Route path="/movie/setting" element={pageValidation(<Setting />)} />
         <Route
           path="/signin"
           element={pageValidationWithoutToken(<SignIn />)}
