@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { Serie } from '../serie/entities/serie.entity';
 import { FileService } from '../file/file.service';
 import { movies } from './assets/movies';
 import { CreateMovieDto } from './dto/create-movie.dto';
@@ -16,6 +17,9 @@ export class MovieService {
   constructor(
     @InjectModel(Movie.name)
     private readonly movieModel: Model<Movie>,
+
+    @InjectModel(Serie.name)
+    private readonly serieModel: Model<Serie>,
 
     private readonly fileService: FileService,
   ) {}
@@ -30,6 +34,28 @@ export class MovieService {
       });
 
       return movie;
+    } catch (error) {
+      this.handleExceptions(error);
+    }
+  }
+
+  async search({ search }) {
+    console.log(
+      '🚀 ~ file: movie.service.ts:43 ~ MovieService ~ search ~ search',
+      search,
+    );
+    try {
+      let data = undefined;
+
+      search = search.toString().toLowerCase();
+
+      data = await this.movieModel.findOne({ name: search }).lean();
+
+      if (data?.length <= 0 || !data) {
+        data = await this.serieModel.find({ name: search }).lean();
+      }
+
+      return data;
     } catch (error) {
       this.handleExceptions(error);
     }

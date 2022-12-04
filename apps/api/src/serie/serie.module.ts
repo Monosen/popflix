@@ -17,5 +17,6 @@ import { FileModule } from '../file/file.module';
     ]),
     FileModule,
   ],
+  exports: [MongooseModule],
 })
 export class SerieModule {}

@@ -59,6 +59,11 @@ export class MovieController {
     return this.movieService.deleteMany();
   }
 
+  @Post('search')
+  search(@Body() searchMovieDto: string) {
+    return this.movieService.search(searchMovieDto);
+  }
+
   @Patch('update/:id')
   @UseGuards(JwtGuard, RolesGuard)
   @Roles('client')
