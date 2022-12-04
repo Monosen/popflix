@@ -33,8 +33,8 @@ body {
 }
 
 .form-account {
-  width: 400px;
-  height: 380px;
+  max-width: 30rem;
+  min-height: 30rem;
   background-color: #616161;
   margin: auto;
   margin-top: 150px;
@@ -42,10 +42,11 @@ body {
   padding: 20px 30px;
   border-top: 4px solid #c07c27;
   color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-account h5 {
-  margin: 10;
   text-align: center;
   height: 40px;
   margin-bottom: 30px;
@@ -66,7 +67,7 @@ body {
 
 .buttons {
   width: 100%;
-  height: 40px;
+  height: 5rem;
   background: #c07c27;
   border: none;
   color: white;
