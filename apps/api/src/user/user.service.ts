@@ -49,8 +49,10 @@ export class UserService {
       throw new Error('Invalid password');
     }
 
+    user.password = undefined;
+
     const token = await this.signToken(user.id, user.username);
-    return { user: { ...updateUserDto, password: undefined }, token };
+    return { user, token };
   }
 
   async findAll() {
