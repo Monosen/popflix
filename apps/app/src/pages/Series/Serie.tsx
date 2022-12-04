@@ -31,7 +31,13 @@ const Serie = () => {
     !loader && (
       <Layout>
         <div className="grid grid-cols-2">
-          <ImageCarousel img={`../../../public/img/series/${serie?.image}`} />
+          <ImageCarousel
+            img={
+              serie.image.startsWith('http')
+                ? serie.image
+                : `../../../public/img/series/${serie?.image}`
+            }
+          />
           <SerialInfo
             title={serie?.name}
             description={serie?.description}

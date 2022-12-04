@@ -30,7 +30,13 @@ const Movie = () => {
     !loader && (
       <Layout>
         <div className="grid grid-cols-2">
-          <ImageCarousel img={`../../../public/img/movies/${movie?.image}`} />
+          <ImageCarousel
+            img={
+              movie.image.startsWith('http')
+                ? movie.image
+                : `../../../public/img/movies/${movie?.image}`
+            }
+          />
           <SerialInfo
             title={movie?.name}
             description={movie?.description}

@@ -13,7 +13,11 @@ const Series = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-8 mt-10 mx-auto place-items-center">
         {series?.map((serie) => (
           <Card
-            img={`../../../public/img/series/${serie.image}`}
+            img={
+              serie.image.startsWith('http')
+                ? serie.image
+                : `../../../public/img/series/${serie.image}`
+            }
             title={serie.name}
             url={`/serie/${serie._id}`}
             key={serie.name}
