@@ -76,7 +76,7 @@ export const Navbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <a>Configuracion</a>
+                      <Link to={'/movie/setting'}>Configuracion</Link>
                     </li>
                     <li onClick={logout}>
                       <a>Cerrar Sesion</a>
@@ -125,7 +125,7 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <a>Configuracion</a>
+                    <Link to={'/movie/setting'}>Configuracion</Link>
                   </li>
                   <li onClick={logout}>
                     <a>Cerrar Sesion</a>
