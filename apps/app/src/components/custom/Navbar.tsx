@@ -1,9 +1,12 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context';
 
 export const Navbar = () => {
   const { logoutUser } = useContext(AuthContext);
+
+  const [toggle, setToggle] = useState(false);
+  const [toggleM, setToggleM] = useState(false);
   const navigate = useNavigate();
 
   const logout = () => {
@@ -56,35 +59,36 @@ export const Navbar = () => {
                   />
                 </div>
               </li>
-              <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                  <div className="w-10 rounded-full">
-                    <img src="https://placeimg.com/80/80/people" />
-                  </div>
+              <div className="dropdown dropdown-end relative">
+                <label className="btn btn-ghost btn-circle avatar top-0 left-0">
+                  <img
+                    className="w-10 rounded-full"
+                    onClick={(e) => setToggleM((e) => !e)}
+                    src="https://placeimg.com/80/80/people"
+                  />
                 </label>
-                <ul
-                  tabIndex={0}
-                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <Link to={'/user/profile'} className="justify-between">
-                      Perfil
-                      <span className="badge">Nuevo</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <a>Configuracion</a>
-                  </li>
-                  <li onClick={logout}>
-                    <a>Cerrar Sesion</a>
-                  </li>
-                  <li>
-                    <Link to={'/movie/new'}>Añadir Peliculas</Link>
-                  </li>
-                  <li>
-                    <Link to={'/serie/new'}>Añadir Series</Link>
-                  </li>
-                </ul>
+                {toggleM && (
+                  <ul className="mt-3 p-2 shadow menu menu-compact absolute z-[1000] bg-base-100 rounded-box w-52 lg:hidden">
+                    <li>
+                      <Link to={'/user/profile'} className="justify-between">
+                        Perfil
+                        <span className="badge">Nuevo</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <a>Configuracion</a>
+                    </li>
+                    <li onClick={logout}>
+                      <a>Cerrar Sesion</a>
+                    </li>
+                    <li>
+                      <Link to={'/movie/new'}>Añadir Peliculas</Link>
+                    </li>
+                    <li>
+                      <Link to={'/serie/new'}>Añadir Series</Link>
+                    </li>
+                  </ul>
+                )}
               </div>
             </ul>
           </div>
@@ -104,35 +108,36 @@ export const Navbar = () => {
               <Link to="/series">Series</Link>
             </li>
 
-            <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src="https://placeimg.com/80/80/people" />
-                </div>
+            <div className="dropdown dropdown-end relative">
+              <label className="btn btn-ghost btn-circle avatar top-0 left-0">
+                <img
+                  className="w-10 rounded-full"
+                  onClick={(e) => setToggle((e) => !e)}
+                  src="https://placeimg.com/80/80/people"
+                />
               </label>
-              <ul
-                tabIndex={0}
-                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <Link to={'/user/profile'} className="justify-between">
-                    Perfil
-                    <span className="badge">Nuevo</span>
-                  </Link>
-                </li>
-                <li>
-                  <a>Configuracion</a>
-                </li>
-                <li onClick={logout}>
-                  <a>Cerrar Sesion</a>
-                </li>
-                <li>
-                  <Link to={'/movie/new'}>Añadir Peliculas</Link>
-                </li>
-                <li>
-                  <Link to={'/serie/new'}>Añadir Series</Link>
-                </li>
-              </ul>
+              {toggle && (
+                <ul className="mt-3 p-2 shadow menu menu-compact absolute z-[1000]  bg-base-100 rounded-box w-52">
+                  <li>
+                    <Link to={'/user/profile'} className="justify-between">
+                      Perfil
+                      <span className="badge">Nuevo</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <a>Configuracion</a>
+                  </li>
+                  <li onClick={logout}>
+                    <a>Cerrar Sesion</a>
+                  </li>
+                  <li>
+                    <Link to={'/movie/new'}>Añadir Peliculas</Link>
+                  </li>
+                  <li>
+                    <Link to={'/serie/new'}>Añadir Series</Link>
+                  </li>
+                </ul>
+              )}
             </div>
           </ul>
         </div>
