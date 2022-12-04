@@ -16,6 +16,8 @@ interface ContextProps {
   loginUser: (username: string, password: string) => Promise<boolean>;
 
   logoutUser: () => void;
+
+  updateUser: (formData: IUser, password: string) => Promise<void>;
 }
 
 export const AuthContext = createContext({} as ContextProps);

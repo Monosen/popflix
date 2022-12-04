@@ -25,10 +25,6 @@ export class UserController {
 
   @Post('signIn')
   signIn(@Body() updateUserDto: UpdateUserDto) {
-    console.log(
-      '🚀 ~ file: user.controller.ts:28 ~ UserController ~ signIn ~ updateUserDto',
-      updateUserDto,
-    );
     return this.userService.signIn(updateUserDto);
   }
 

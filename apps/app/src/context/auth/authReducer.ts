@@ -4,7 +4,8 @@ import { IUser } from '../interfaces/IUser';
 type AuthActionType =
   | { type: '[Auth] - Login'; payload: IUser }
   | { type: '[Auth] - Logout' }
-  | { type: '[Auth] - Register'; payload: IUser };
+  | { type: '[Auth] - Register'; payload: IUser }
+  | { type: '[Auth] - Update'; payload: IUser };
 
 export const authReducer = (
   state: AuthState,
@@ -22,6 +23,11 @@ export const authReducer = (
         user: undefined,
       };
     case '[Auth] - Register':
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case '[Auth] - Update':
       return {
         ...state,
         user: action.payload,

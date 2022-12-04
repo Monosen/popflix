@@ -79,9 +79,19 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     dispatch({ type: '[Auth] - Logout' });
   };
 
+  const updateUser = async (formData: IUser, password: string) => {
+    try {
+      await loginUser(formData.username, password);
+
+      dispatch({ type: '[Auth] - Update', payload: formData });
+    } catch (error) {
+      console.log('🚀 ~ file: AuthProvider.tsx:86 ~ updateUser ~ error', error);
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ ...state, registerUser, loginUser, logoutUser }}
+      value={{ ...state, registerUser, loginUser, logoutUser, updateUser }}
     >
       {children}
     </AuthContext.Provider>
