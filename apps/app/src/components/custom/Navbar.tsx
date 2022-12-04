@@ -54,7 +54,7 @@ export const Navbar = () => {
                 <div className="form-control mt-3">
                   <input
                     type="text"
-                    placeholder="Search books..."
+                    placeholder="Buscar Peliculas y Series..."
                     className="input input-bordered input-primary w-full"
                   />
                 </div>
@@ -145,7 +145,7 @@ export const Navbar = () => {
           <div className="form-control">
             <input
               type="text"
-              placeholder="Search books..."
+              placeholder="Buscar Peliculas y Series..."
               className="input input-bordered input-primary w-full"
             />
           </div>
