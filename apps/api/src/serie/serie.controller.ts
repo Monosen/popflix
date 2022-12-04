@@ -8,6 +8,7 @@ import {
   Delete,
   UploadedFile,
   UseInterceptors,
+  UseGuards,
 } from '@nestjs/common';
 import { SerieService } from './serie.service';
 import { CreateSerieDto } from './dto/create-serie.dto';
@@ -16,6 +17,8 @@ import { diskStorage } from 'multer';
 import { fileName } from '../file/helpers/fileName.helper';
 import { fileFilter } from '../file/helpers/fileFilter.helper';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { JwtGuard, RolesGuard } from '../user/guard';
+import { Roles } from '../user/decorator';
 
 @Controller('serie')
 export class SerieController {
@@ -33,6 +36,8 @@ export class SerieController {
   }
 
   @Get('all')
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles('client')
   findAll() {
     return this.serieService.findAll();
   }
@@ -48,16 +53,22 @@ export class SerieController {
   }
 
   @Get('one/:id')
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles('client')
   findOne(@Param('id') id: string) {
     return this.serieService.findOne(id);
   }
 
   @Patch('update/:id')
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles('client')
   update(@Param('id') id: string, @Body() updateSerieDto: UpdateSerieDto) {
     return this.serieService.update(id, updateSerieDto);
   }
 
   @Delete('delete/:id')
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles('admin')
   remove(@Param('id') id: string) {
     return this.serieService.remove(id);
   }

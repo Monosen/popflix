@@ -8,6 +8,7 @@ import {
   Delete,
   UseInterceptors,
   UploadedFile,
+  UseGuards,
 } from '@nestjs/common';
 import { MovieService } from './movie.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
@@ -16,6 +17,8 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { fileFilter } from '../file/helpers/fileFilter.helper';
 import { diskStorage } from 'multer';
 import { fileName } from '../file/helpers/fileName.helper';
+import { RolesGuard, JwtGuard } from '../user/guard';
+import { Roles } from '../user/decorator';
 
 @Controller('movie')
 export class MovieController {
@@ -33,11 +36,15 @@ export class MovieController {
   }
 
   @Get('all')
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles('client')
   findAll() {
     return this.movieService.findAll();
   }
 
   @Get('one/:id')
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles('client')
   findOne(@Param('id') id: string) {
     return this.movieService.findOne(id);
   }
@@ -53,11 +60,15 @@ export class MovieController {
   }
 
   @Patch('update/:id')
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles('client')
   update(@Param('id') id: string, @Body() updateMovieDto: UpdateMovieDto) {
     return this.movieService.update(id, updateMovieDto);
   }
 
   @Delete('delete/:id')
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles('admin')
   remove(@Param('id') id: string) {
     return this.movieService.remove(id);
   }
