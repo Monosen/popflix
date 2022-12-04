@@ -1,13 +1,18 @@
-import { StrictMode } from 'react';
-import * as ReactDOM from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { AuthProvider, MovieProvider, SerieProvider } from './context';
 
-import App from './app/app';
+import './index.css';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <AuthProvider>
+      <MovieProvider>
+        <SerieProvider>
+          <App />
+        </SerieProvider>
+      </MovieProvider>
+    </AuthProvider>
+  </React.StrictMode>
 );
