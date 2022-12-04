@@ -28,6 +28,8 @@ export class MovieService {
     try {
       const { url } = await this.fileService.uploadFile(file);
 
+      createMovieDto.name = createMovieDto.name.toLowerCase();
+
       const movie = await this.movieModel.create({
         ...createMovieDto,
         image: url,

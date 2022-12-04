@@ -19,6 +19,8 @@ export class SerieService {
     try {
       const { url } = await this.fileService.uploadFile(file);
 
+      createSerieDto.name = createSerieDto.name.toLowerCase();
+
       const serie = await this.serieModel.create({
         ...createSerieDto,
         image: url,

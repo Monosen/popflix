@@ -67,10 +67,10 @@ export const Navbar = () => {
                   className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <a className="justify-between">
+                    <Link to={'/user/profile'} className="justify-between">
                       Perfil
                       <span className="badge">Nuevo</span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a>Configuracion</a>
@@ -115,10 +115,10 @@ export const Navbar = () => {
                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a className="justify-between">
+                  <Link to={'/user/profile'} className="justify-between">
                     Perfil
                     <span className="badge">Nuevo</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a>Configuracion</a>
