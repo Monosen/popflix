@@ -1,6 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { popflixApi } from '../../api';
 import Layout from '../../layouts/Layout';
+import { SerieContext } from '../../context';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface FormData {
   name: string;
@@ -12,6 +15,8 @@ interface FormData {
 }
 
 const NewSerie = () => {
+  const { addSerie } = useContext(SerieContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -35,10 +40,11 @@ const NewSerie = () => {
         formData.append('actors', '');
         formData.append('file', file);
 
-        const { data } = await popflixApi.post<{ message: string }>(
-          '/serie/create',
-          formData
-        );
+        const { data } = await popflixApi.post('/serie/create', formData);
+
+        await addSerie(data);
+
+        navigate('/series');
       }
     } catch (error) {
       console.log(error);

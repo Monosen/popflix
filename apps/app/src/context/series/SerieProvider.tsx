@@ -22,8 +22,7 @@ export const SerieProvider: FC<PropsWithChildren> = ({ children }) => {
   const getMovies = async () => {
     try {
       const { data } = await popflixApi.get('/serie/all');
-
-      dispatch({ type: '[Serie] - adding movies', payload: data });
+      dispatch({ type: '[Serie] - adding series', payload: data });
     } catch (error) {
       console.log('🚀 ~ file: MovieProvider.tsx:24 ~ getMovies ~ error', error);
     }
@@ -42,8 +41,16 @@ export const SerieProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
+  const addSerie = async (serie: ISerie) => {
+    try {
+      dispatch({ type: '[Serie] - adding a serie', payload: serie });
+    } catch (error) {
+      console.log('🚀 ~ file: SerieProvider.tsx:49 ~ addSerie ~ error', error);
+    }
+  };
+
   return (
-    <SerieContext.Provider value={{ ...state, getSerieById }}>
+    <SerieContext.Provider value={{ ...state, getSerieById, addSerie }}>
       {children}
     </SerieContext.Provider>
   );
