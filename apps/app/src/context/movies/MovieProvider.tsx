@@ -42,8 +42,16 @@ export const MovieProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
+  const addMovie = async (movie: IMovie) => {
+    try {
+      dispatch({ type: '[Movie] - adding a movie', payload: movie });
+    } catch (error) {
+      console.log('🚀 ~ file: MovieProvider.tsx:49 ~ addMovie ~ error', error);
+    }
+  };
+
   return (
-    <MovieContext.Provider value={{ ...state, getMovieById }}>
+    <MovieContext.Provider value={{ ...state, getMovieById, addMovie }}>
       {children}
     </MovieContext.Provider>
   );

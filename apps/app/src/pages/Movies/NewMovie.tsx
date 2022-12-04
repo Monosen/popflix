@@ -1,7 +1,9 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { popflixApi } from '../../api';
+import { MovieContext } from '../../context';
 import Layout from '../../layouts/Layout';
+import { useNavigate } from 'react-router-dom';
 
 interface FormData {
   name: string;
@@ -12,13 +14,14 @@ interface FormData {
 }
 
 const NewMovie = () => {
+  const { addMovie } = useContext(MovieContext);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     getValues,
-    setValue,
-    watch,
   } = useForm<FormData>({});
 
   const onSubmit = async (formData: FormData) => {
@@ -35,10 +38,11 @@ const NewMovie = () => {
         formData.append('categories', '');
         formData.append('file', file);
 
-        const { data } = await popflixApi.post<{ message: string }>(
-          '/movie/create',
-          formData
-        );
+        const { data } = await popflixApi.post('/movie/create', formData);
+
+        await addMovie(data);
+
+        navigate('/movies');
       }
     } catch (error) {
       console.log(error);
