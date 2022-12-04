@@ -44,7 +44,8 @@ const Movie = () => {
           />
         </div>
 
-        <Video />
+        <h3 className="text-5xl text-center mt-14">Video</h3>
+        {movie.video.length > 10 && <Video video={movie?.video} />}
       </Layout>
     )
   );

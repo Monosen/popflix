@@ -45,7 +45,8 @@ const Serie = () => {
           />
         </div>
 
-        <Video />
+        <h3 className="text-5xl text-center mt-14">Video</h3>
+        {serie.video.length > 10 && <Video video={serie?.video} />}
       </Layout>
     )
   );
