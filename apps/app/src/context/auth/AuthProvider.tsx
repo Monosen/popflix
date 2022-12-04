@@ -1,5 +1,5 @@
 import Cookie from 'js-cookie';
-import { FC, PropsWithChildren, useReducer } from 'react';
+import { FC, PropsWithChildren, useEffect, useReducer } from 'react';
 
 import { popflixApi } from '../../api';
 import { IUser } from '../interfaces';
@@ -16,6 +16,13 @@ const AUTH_INITIAL_STATE: AuthState = {
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, AUTH_INITIAL_STATE);
 
+  useEffect(() => {
+    const user = sessionStorage.getItem('user');
+    if (user) {
+      dispatch({ type: '[Auth] - Login', payload: JSON.parse(user) });
+    }
+  }, []);
+
   const loginUser = async (
     username: string,
     password: string
@@ -26,6 +33,8 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         password,
       });
       const { token, user } = data;
+
+      sessionStorage.setItem('user', JSON.stringify(user));
 
       Cookie.set('token', token);
 
@@ -51,9 +60,13 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         country,
       });
 
-      Cookie.set('token', data.token);
+      const { token, user } = data;
 
-      dispatch({ type: '[Auth] - Register', payload: data });
+      sessionStorage.setItem('user', JSON.stringify(user));
+
+      Cookie.set('token', token);
+
+      dispatch({ type: '[Auth] - Register', payload: user });
 
       return { hasError: false };
     } catch (error) {
