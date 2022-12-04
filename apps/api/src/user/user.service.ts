@@ -28,7 +28,9 @@ export class UserService {
 
     const token = await this.signToken(user.id, user.username);
 
-    return { user: { ...createUserDto, password: undefined }, token };
+    user.password = undefined;
+
+    return { user, token };
   }
 
   async signIn(updateUserDto: UpdateUserDto) {
