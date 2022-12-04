@@ -2,10 +2,16 @@ import Layout from '../../layouts/Layout';
 
 import { Card } from '../../components/custom/Card';
 import { useContext } from 'react';
-import { SerieContext } from '../../context';
+import { AuthContext, SerieContext } from '../../context';
+import { IUser } from '../../context/interfaces';
+
+interface Props extends IUser {
+  role: string[];
+}
 
 const Series = () => {
   const { series } = useContext(SerieContext);
+  const { user } = useContext(AuthContext) as unknown as { user: Props };
 
   return (
     <Layout>
@@ -18,6 +24,9 @@ const Series = () => {
                 ? serie.image
                 : `../../../public/img/series/${serie.image}`
             }
+            id={serie._id}
+            type={'serie'}
+            role={user?.role[0] === 'admin' ? 'admin' : 'client'}
             title={serie.name}
             url={`/serie/${serie._id}`}
             key={serie.name}

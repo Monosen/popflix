@@ -5,6 +5,7 @@ interface ContextProps {
   movies?: IMovie[];
   getMovieById: (id: string) => Promise<any>;
   addMovie: (movie: IMovie) => Promise<void>;
+  deleteMovie: (id: string) => Promise<void>;
 }
 
 export const MovieContext = createContext({} as ContextProps);

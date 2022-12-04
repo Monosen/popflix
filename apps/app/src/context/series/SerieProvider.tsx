@@ -49,8 +49,23 @@ export const SerieProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
+  const deleteSerie = async (id: string) => {
+    try {
+      await popflixApi.delete(`/serie/delete/${id}`);
+
+      dispatch({ type: '[Serie] - removing a serie', payload: id });
+    } catch (error) {
+      console.log(
+        '🚀 ~ file: SerieProvider.tsx:58 ~ deleteSerie ~ error',
+        error
+      );
+    }
+  };
+
   return (
-    <SerieContext.Provider value={{ ...state, getSerieById, addSerie }}>
+    <SerieContext.Provider
+      value={{ ...state, getSerieById, addSerie, deleteSerie }}
+    >
       {children}
     </SerieContext.Provider>
   );

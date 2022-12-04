@@ -50,8 +50,23 @@ export const MovieProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   };
 
+  const deleteMovie = async (id: string) => {
+    try {
+      await popflixApi.delete(`/movie/delete/${id}`);
+
+      dispatch({ type: '[Movie] - removing a movie', payload: id });
+    } catch (error) {
+      console.log(
+        '🚀 ~ file: MovieProvider.tsx:57 ~ deleteMovie ~ error',
+        error
+      );
+    }
+  };
+
   return (
-    <MovieContext.Provider value={{ ...state, getMovieById, addMovie }}>
+    <MovieContext.Provider
+      value={{ ...state, getMovieById, addMovie, deleteMovie }}
+    >
       {children}
     </MovieContext.Provider>
   );

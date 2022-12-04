@@ -37,7 +37,7 @@ export class SerieController {
 
   @Get('all')
   @UseGuards(JwtGuard, RolesGuard)
-  @Roles('client')
+  @Roles('client', 'admin')
   findAll() {
     return this.serieService.findAll();
   }
@@ -54,14 +54,14 @@ export class SerieController {
 
   @Get('one/:id')
   @UseGuards(JwtGuard, RolesGuard)
-  @Roles('client')
+  @Roles('client', 'admin')
   findOne(@Param('id') id: string) {
     return this.serieService.findOne(id);
   }
 
   @Patch('update/:id')
   @UseGuards(JwtGuard, RolesGuard)
-  @Roles('client')
+  @Roles('client', 'admin')
   update(@Param('id') id: string, @Body() updateSerieDto: UpdateSerieDto) {
     return this.serieService.update(id, updateSerieDto);
   }

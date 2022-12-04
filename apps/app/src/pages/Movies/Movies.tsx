@@ -1,10 +1,16 @@
 import { Card } from '../../components/custom';
 import Layout from '../../layouts/Layout';
 import { useContext } from 'react';
-import { MovieContext } from '../../context';
+import { AuthContext, MovieContext } from '../../context';
+import { IUser } from '../../context/interfaces';
+
+interface Props extends IUser {
+  role: string[];
+}
 
 const Movies = () => {
   const { movies } = useContext(MovieContext);
+  const { user } = useContext(AuthContext) as unknown as { user: Props };
 
   return (
     <Layout>
@@ -18,6 +24,9 @@ const Movies = () => {
                 ? movie.image
                 : `../../../public/img/movies/${movie.image}`
             }
+            type={'movie'}
+            id={movie._id}
+            role={user?.role[0] === 'admin' ? 'admin' : 'client'}
             title={movie.name}
             key={movie.name}
           />
